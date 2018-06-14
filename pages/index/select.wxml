@@ -1,0 +1,29 @@
+<view class="select">
+  <view class="sel-btn"><input type="text" placeholder="搜索文章" bindinput="inputselect" bindconfirm="searchBtn" focus='ture' value="{{selval}}" /></view>
+</view>
+<view class="selhisty" hidden="{{histy?false:true}}">
+	<view class="histy_t">
+		<text>历史搜索</text>
+		<text bindtap="clearhisty">清除</text>
+	</view>
+	<view class="histy_c">
+		<text wx:for="{{histy}}" wx:key="" class="histyspan" bindtap="histyclk" data-text="{{item}}">{{item}}</text>
+	</view>
+</view>
+<swiper class="tabs-content" current="0"  bindchange="changeTab">
+  <swiper-item class="tabs-content-item">
+    <view class="sview">
+      <scroll-view class="sview" scroll-y>
+        <view wx:for="{{posts}}" wx:key="" >
+          <view class="post-item" bindtap="showpost" data-id="{{item.id}}">
+            <view class="item-img"><image src="{{item.other.large?item.other.large:morenimg}}"></image></view>
+            <view class="item-txt">
+              <view class="item-title">{{item.title.rendered}}</view>
+              <view class="item-other">时间：{{item.date}}  浏览量：{{item.other.views?item.other.views:0}}</view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </swiper-item>
+</swiper>

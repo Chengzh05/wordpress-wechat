@@ -1,0 +1,7 @@
+<import src="../../wxParse/wxParse.wxml"/> 
+<view class="posttitle">
+	{{post_title}}
+</view>
+<view class="wxcode">
+<template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+</view>
