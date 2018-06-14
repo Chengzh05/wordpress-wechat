@@ -5,6 +5,7 @@
 
 放在您模板的functions.php中
 
+```php
 function ws_register_other_field() {
     register_rest_field( 
         'post',
@@ -34,3 +35,4 @@ function ws_get_other_func( $object, $field_name, $request ) {
         'views'  => $views,
     );
 }
+```
