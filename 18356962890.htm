@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <script type="text/javascript" src="https://www.managedog.com/static/js//jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.managedog.com/static/lib//layui/layui.js" charset="utf-8"></script>
+     <link rel="stylesheet" href="https://www.managedog.com/static/font-awesome/css/font-awesome.min.css">
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<style>
+    html,body{
+        margin: 0;
+        padding: 0;
+        background-color: #fff;
+    }
+    *{
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+    body{
+        padding-bottom:60px;
+        font-family:'Helvetica';
+    }
+    ul{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+    }
+    .wp-top{
+        height: 30px;
+        line-height: 30px;
+        padding: 0 10px;
+        font-size: 12px;
+        display: flex;
+        justify-content: space-between;
+        background-color: #ffffff;
+        border-top: 1px solid #ededed;
+        border-bottom: 1px solid #ededed;
+    }
+    .wp-top a{
+        color: #101010;
+        text-decoration: none;
+    }
+    #total_credits{
+        color: #3F51B5;
+    }
+    .getbox{
+
+    }
+    .gtbox{
+        padding: 10px;
+    }
+    .gtline{
+        color: #101010;
+        font-size: 14px;
+    }
+    .gtline span:last-child{
+        color: #8f8f8f;
+        font-size: 14px;
+    }
+    .gtcnt{
+    }
+    .gtbtn{
+        width: 120px;
+        height: 36px;
+        line-height: 36px;
+        margin: 42px auto;
+        text-align: center;
+        border: 1px solid #3F51B5;
+        color: #3F51B5;
+        font-size: 14px;
+    }
+    .gtdes{
+        font-size: 12px;
+        color: #8f8f8f;
+        text-align: center;
+    }
+</style>
+<body>
+<div class="wp-top">
+    <div>
+        我的元宝 <span id="total_credits">220</span> <span>首页</span>
+    </div>
+    <div>
+        <a href="">兑换奖品</a> <a href="">我的竞猜</a> <a href="">规则</a>
+    </div>
+</div>
+<div class="getbox">
+    <div class="gtbox">
+        <div class="gtline"><span>签到领／</span><span>每日可领取100元宝／1次</span></div>
+        <div class="gtcnt">
+            <div class="gtbtn" id="get_credits">点击领取 <i class="fa fa-hand-o-right"></i></div>
+        </div>
+    </div>
+    <div style="height: 10px;background-color: #ededed"></div>
+    <div class="gtbox">
+        <div class="gtline"><span>分享领／</span><span>每日分享后可领取100元宝／1次</span></div>
+        <div class="gtcnt">
+            <div class="gtbtn" id="get_credits">点我分享 <i class="fa fa-share-square-o"></i></div>
+        </div>
+        <div class="gtdes">分享到朋友圈、微信群可获得元宝，分享后下拉刷新小程序即可。</div>
+    </div>
+    <div style="height: 10px;background-color: #ededed"></div>
+    <div class="gtbox">
+        <div class="gtline"><span>邀请领／</span><span>每日不限领取次数，200元宝／1次</span></div>
+        <div class="gtcnt">
+            <div class="gtbtn" id="get_credits">立即邀请 <i class="fa fa-user-plus"></i></div>
+        </div>
+        <div class="gtdes">邀请好友成为小江南会员，成功邀请1人可获200积分，不限次数。</div>
+    </div>
+    <div style="height: 10px;background-color: #ededed"></div>
+</div>
+
+</body>
+<script>
+
+    $(function (){
+        layui.use('form', function(){
+
+            $("#get_credits").click(function () {
+                $.post("/active/fifa/get_credits/openid/oovC84lTVB-dYvNe_Th73PmunMNE/phone/18356962890.html",{},function (res) {
+                    if(res.code){
+                        layer.msg(res.msg,function(){});
+                    }else{
+                        layer.msg(res.msg);
+                        $('#total_credits').html(res.credits);
+                    }
+                })
+            })
+        })
+    })
+</script>
+</html>
